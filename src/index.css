@@ -139,12 +139,14 @@ td {
 button {
   background-color: #5c6a79;
   color: white;
-  padding: 1px 10px;
+  width: 90px;
+  margin: 0 5px;
+  padding: 4px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-family: "Oswald", sans-serif;
-  font-size: 0.9em;
+  font-size: 1em;
   border-radius: 5px;
 }
 
