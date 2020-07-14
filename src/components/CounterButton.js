@@ -1,7 +1,11 @@
 import React from "react";
 
 const counterButton = (props) => {
-  return <button onClick={props.buttonFunction}>{props.buttonName}</button>;
+  return (
+    <button data-type={props.buttonName} onClick={props.buttonFunction}>
+      {props.buttonName}
+    </button>
+  );
 };
 
 export default counterButton;
