@@ -35,7 +35,7 @@ class Counter extends Component {
 
   render() {
     return (
-      <div className="container-inner">
+      <div className="container-inner" data-test="component-counter">
         <CounterDisplay counterValue={this.state.counterValue} />
         <div className="spacer10" />
         <CounterButton
