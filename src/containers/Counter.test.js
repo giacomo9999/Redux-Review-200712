@@ -4,9 +4,16 @@ import { findByAttr } from "../../test/testUtils";
 
 import Counter from "./Counter";
 import CounterButton from "../components/CounterButton";
+import CounterDisplay from "../components/CounterDisplay";
 
 const setup = (props = {}, state = null) => {
   const wrapper = shallow(<Counter {...props} />);
+  if (state) wrapper.setState(state);
+  return wrapper;
+};
+
+const setupMount = (props = {}, state = null) => {
+  const wrapper = mount(<Counter {...props} />);
   if (state) wrapper.setState(state);
   return wrapper;
 };
@@ -23,10 +30,15 @@ test("Initial counter value is set at 0", () => {
 
 test("Clicking 'increment' button increments counter by 1", () => {
   const counterTestNum = 7;
-  const wrapper = mount(<Counter />);
-  const incButton = wrapper
+  const mountWrapper = setupMount(null, { counterValue: counterTestNum });
+
+  const incButton = mountWrapper
     .find(CounterButton)
-    .find({ buttonName: "Increment" });
-  // const incButton = counterButtons.find({ buttonName: "Increment" });
-  console.log("Inc button:", incButton.debug());
+    .find({ buttonName: "Increment" })
+    .find("button");
+  incButton.simulate("click");
+
+  const counterDisplay = mountWrapper.find(CounterDisplay).find("h1");
+  expect(counterDisplay.text()).toContain(counterTestNum + 1);
+  
 });
