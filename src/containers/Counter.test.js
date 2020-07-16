@@ -1,8 +1,9 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { findByAttr } from "../../test/testUtils";
 
 import Counter from "./Counter";
+import CounterButton from "../components/CounterButton";
 
 const setup = (props = {}, state = null) => {
   const wrapper = shallow(<Counter {...props} />);
@@ -22,7 +23,8 @@ test("Initial counter value is set at 0", () => {
 
 test("Clicking 'increment' button increments counter by 1", () => {
   const counterTestNum = 7;
-  const wrapper = setup(null, { counterValue: counterTestNum });
-  wrapper.find({ buttonName: "Increment" }).simulate("click");
-//   const counterDisplayNum = wrapper.find();
+  const wrapper = mount(<Counter />);
+  const counterButtons = wrapper.find(CounterButton);
+  const incButton = counterButtons.find({ buttonName: "Increment" });
+  console.log("Inc button:",incButton.debug());
 });
