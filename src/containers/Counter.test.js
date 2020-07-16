@@ -24,7 +24,9 @@ test("Initial counter value is set at 0", () => {
 test("Clicking 'increment' button increments counter by 1", () => {
   const counterTestNum = 7;
   const wrapper = mount(<Counter />);
-  const counterButtons = wrapper.find(CounterButton);
-  const incButton = counterButtons.find({ buttonName: "Increment" });
-  console.log("Inc button:",incButton.debug());
+  const incButton = wrapper
+    .find(CounterButton)
+    .find({ buttonName: "Increment" });
+  // const incButton = counterButtons.find({ buttonName: "Increment" });
+  console.log("Inc button:", incButton.debug());
 });
