@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import CounterDisplay from "../components/CounterDisplay";
 import CounterButton from "../components/CounterButton";
@@ -61,4 +62,8 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+const mapStateToProps = (state) => {
+  return { ctr: state.counter };
+};
+
+export default connect(mapStateToProps)(Counter);
